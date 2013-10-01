@@ -1,0 +1,7 @@
+#!/bin/bash
+cleanman(){
+  man "$1" | tr -d '[\\b_]' 
+ 
+}
+cleanman $1
+
