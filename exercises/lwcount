@@ -1,0 +1,8 @@
+#!/bin/bash
+while read line <&0
+do
+IFS=' ' read -a words <<< $line
+len=${#words[@]}
+echo $len
+done
+

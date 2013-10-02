@@ -1,0 +1,12 @@
+#!/bin/bash
+while read line <&0
+do
+IFS=' ' read -a words <<<$line
+
+for (( i=$1; i<=$2; i++));
+do
+  printf  "${words[$i]} "
+done
+echo
+done
+
