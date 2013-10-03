@@ -1,0 +1,9 @@
+#!/bin/bash
+exec ls /Users/Leah/bcdo-training/exercises/wor*
+
+
+echo There is \"a small possibility\" that `/etc/*tab` are " not " text and a backslash will not be printed after this
+
+echo "$var"
+echo "The path is  `pwd` in the path $var"
+echo 'The path is `pwd` in the path $var'

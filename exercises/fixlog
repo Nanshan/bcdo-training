@@ -1,0 +1,6 @@
+#!/bin/bash
+
+while read fname <&0
+do
+  echo mv $fname ${fname/.log/.LOG}
+done
