@@ -1,4 +1,4 @@
-#-*- mode: ruby -*-
+# -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -11,11 +11,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "precise64"
-  config.vm.provision :puppet do |puppet|
-       puppet.manifests_path="../../puppet/manifests"
-       puppet.module_path="../../puppet/modules"
-       puppet.manifest_file="site.pp"
-  end              
+  config.vm.provision :salt do |salt|
+    salt.minion_config = "salt/minion"
+    salt.run_highstate = true
+  end 
   
 
   # The url from where the 'config.vm.box' box will be fetched if it
