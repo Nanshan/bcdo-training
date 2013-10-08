@@ -1,8 +1,8 @@
 #!/bin/bash
-while read line <&0
+while read line <&0 #stdin
 do
 IFS=' ' read -a words <<< $line
 len=${#words[@]}
 echo $len
 done
-
+# /dev/stdin , |wc -w
