@@ -1,0 +1,1 @@
+myvar has : <%= myvar %>

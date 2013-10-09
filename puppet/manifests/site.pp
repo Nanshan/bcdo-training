@@ -1,4 +1,6 @@
 node default {
+  $myvar = "kate"
+  include test
   include sshd_config  
   include motd
   include cronjob
