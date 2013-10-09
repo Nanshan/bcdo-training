@@ -4,4 +4,9 @@ node default {
   include cronjob
   include manage_group
   include hosts
+  include manage_user
+  include manage_service
+  include sshkey
+  include installs
+  include install2
 }
