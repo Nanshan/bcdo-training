@@ -1,0 +1,2 @@
+#!/bin/bash
+logger "Kilory was here at 1990-08-09 09:30, runlevel `echo runlevel`"
