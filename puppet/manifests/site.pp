@@ -10,4 +10,5 @@ node default {
   include installs
   include install2
   include manage_content
+  include externalCommand 
 }
