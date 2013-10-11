@@ -1,9 +1,0 @@
-#!/bin/bash
-#IFS=' ' read -a words <<<"$@"
-hosts=("$@")
-len=${#hosts[@]}
-for (( i=0; i<$len; i++));
-do
-  echo  "${hosts[$i]}" | sed 's/\([^0-9]*\)\([0-9]*\)/\1:\2/'
-done | sort  -t: -k 1,1 -k 2,2n | tr -d :   
-  

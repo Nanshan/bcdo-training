@@ -1,5 +1,0 @@
-qahost:1
-qahost:11
-qahost:2
-buildhost:2
-build:12
