@@ -1,3 +1,3 @@
-/etc/ssh/ssh_config:
-    file.managed::
-       - source: salt://sshd_config
+/etc/ssh/sshd_config:
+    file.managed:
+       - source: salt://sshconfig/sshconfig.copy

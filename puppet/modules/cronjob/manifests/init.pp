@@ -5,5 +5,5 @@ class cronjob {
         user    => root,
         hour    => 2,
         minute  => 0    
-}
+        }
 }
