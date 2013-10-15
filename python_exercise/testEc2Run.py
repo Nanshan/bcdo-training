@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 import unittest
-import ec2run 
 import sys
+import run
 import argparse
 class testEc2Run(unittest.TestCase):
     def setUp(self):
@@ -11,10 +11,11 @@ class testEc2Run(unittest.TestCase):
         pass
 
     def testLength(self):
-        self.assertEqual(len(ec2run.dic_args),10)
+        self.assertEqual(len(run.dic_args),10)
     
     def testAmi(self):
-        self.assertEqual(ec2run.dic_args['ami'], 'ami-123456')
+        ec2run=run()
+        self.assertEqual(ec2run.get_arg( ami), 'ami-123456')
 
 if __name__ == '__main__':
     unittest.main()

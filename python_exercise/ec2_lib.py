@@ -34,5 +34,6 @@ dic_args=vars(args)
 
 for key in dic_args.keys():
     print "%s: %s" % (key, dic_args[key])
+
 def get_arg(self,arg):
     return eval('self.args.%s' % arg)
