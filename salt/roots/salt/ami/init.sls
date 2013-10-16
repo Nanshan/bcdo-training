@@ -1,6 +1,6 @@
 /etc/salt/minion:
     file.managed:
-       - source: salt://ami/ami.copy
+       - source: salt://ami/minion.copy
 ~
 ~
 ~

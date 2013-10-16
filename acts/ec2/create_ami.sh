@@ -5,7 +5,7 @@ sudo add-apt-repository ppa:saltstack/salt
 echo "done ppa"
 
 echo "updating"
-apt-get update
+sudo apt-get update
 echo "done updating"
 
 echo "install salt minion"
