@@ -15,10 +15,6 @@ parser.add_argument("-t", "--instance_type", help="Ec2 Instance Type", default="
 args = parser.parse_args()
 
 
-
-
-
-
 dic_args=vars(args)
 
 for key in dic_args.keys():

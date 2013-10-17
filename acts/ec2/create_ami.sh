@@ -11,3 +11,8 @@ echo "done updating"
 echo "install salt minion"
 sudo apt-get install salt-minion
 echo "done salt minion"
+####
+# make some chages to minion
+# and set minion start on reboot
+#
+####

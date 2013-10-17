@@ -1,0 +1,12 @@
+Notes for aws ec2 :
+
+1) when run ec2 command lines: do not forget the region
+
+copy file to ec2 instances:
+
+
+common ec2 command lines:
+
+
+run remotely:
+

@@ -7,7 +7,7 @@ import argparse
 from libcloud.compute.types import Provider
 from libcloud.compute.providers import get_driver
 
-Driver = get_driver(Provider.EC2)
+Driver = get_driver(Provider.EC2_US_WEST)
 
 AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY', None)
 AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY', None)
@@ -36,3 +36,4 @@ for key in dic_args.keys():
     print "%s: %s" % (key, dic_args[key])
 def get_arg(self,arg):
     return eval('self.args.%s' % arg)
+
