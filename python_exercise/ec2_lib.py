@@ -29,24 +29,23 @@ class ec2run(object):
         for key in arg_list:
             print "%s: %s" % (key, self.get_arg(key))
  
-    def validate_image(self,arg):
-       # try:       
-           #image=conn.list_images(ex_image_ids=[ self.args.ami ])
-           image=conn.list_images(ex_image_ids=[ arg ])
-           print image
-           print "Name: %s" % image.name
-           print "Id: %s" % image.id
-           return 1 
-        #except:
-         #  print "No image"
-          # return 0
+    def validate_image(self, ami):
+        try:       
+#           image=conn.list_images(ex_image_ids=[ self.args.ami ])
+            image=conn.list_images(ex_image_ids=[ ami ])[0]
+            print image 
+            #print "Name: %s" % image.name
+
+            return 1 
+        except:
+            return 0
 
 def main():
-  ec2obj = ec2run()
-  args=ec2obj.parse_args(sys.argv[1:])
-  print args
-  ec2obj.print_args(args)
-  print ec2obj.validate_image('ami-daf9cd9f')
+   ec2obj = ec2run()
+   args=ec2obj.parse_args(sys.argv[1:])
+#   print args
+  # ec2obj.print_args(args)
+   print ec2obj.validate_image('ami-3a36027f')
 
 if __name__ == '__main__':
     main()
