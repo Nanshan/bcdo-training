@@ -11,3 +11,11 @@ echo "done updating"
 echo "install salt minion"
 sudo apt-get install salt-minion
 echo "done salt minion"
+
+echo "edit the minion -set up the master location"
+cat << EOF > /etc/salt/minion
+
+master: localhost
+
+EOF
+salt-minion
