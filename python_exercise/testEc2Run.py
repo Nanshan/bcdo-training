@@ -24,7 +24,7 @@ class testEc2Run(unittest.TestCase):
         self.assertEqual(self.ec2.validate_image('ami-123456'),0)  
 
     def test_ValidateAmi(self):
-        self.assertEqual(self.ec2.validate_image('ami-b93264d0'),1)
+        self.assertEqual(self.ec2.validate_image('ami-3a36027f'),1)
 
 if __name__ == '__main__':
     unittest.main()

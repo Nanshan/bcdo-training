@@ -40,6 +40,9 @@ class ec2run(object):
         except:
             return 0
 
+    def validate_zone(self, zone): 
+        zone=conn.list_zon
+
 def main():
    ec2obj = ec2run()
    args=ec2obj.parse_args(sys.argv[1:])
