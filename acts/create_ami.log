@@ -1,0 +1,90 @@
+install stalstack ppa
+Reading package lists...
+Building dependency tree...
+Reading state information...
+python-software-properties is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 106 not upgraded.
+gpg: keyring `/tmp/tmp5XTR0A/secring.gpg' created
+gpg: keyring `/tmp/tmp5XTR0A/pubring.gpg' created
+gpg: requesting key 0E27C0A6 from hkp server keyserver.ubuntu.com
+gpg: /tmp/tmp5XTR0A/trustdb.gpg: trustdb created
+gpg: key 0E27C0A6: public key "Launchpad PPA for Salt Stack" imported
+gpg: Total number processed: 1
+gpg:               imported: 1  (RSA: 1)
+OK
+You are about to add the following PPA to your system:
+ Salt, the remote execution and configuration management tool.
+ More info: https://launchpad.net/~saltstack/+archive/salt
+done ppa
+updating
+Get:1 http://us-west-1.ec2.archive.ubuntu.com precise Release.gpg [198 B]
+Get:2 http://us-west-1.ec2.archive.ubuntu.com precise-updates Release.gpg [198 B]
+Hit http://us-west-1.ec2.archive.ubuntu.com precise Release
+Get:3 http://us-west-1.ec2.archive.ubuntu.com precise-updates Release [49.6 kB]
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/main Sources
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe Sources
+Get:4 http://us-west-1.ec2.archive.ubuntu.com precise/main amd64 Packages [1,273 kB]
+Get:5 http://security.ubuntu.com precise-security Release.gpg [198 B]
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe amd64 Packages
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/main i386 Packages
+Get:6 http://us-west-1.ec2.archive.ubuntu.com precise/universe i386 Packages [4,796 kB]
+Get:7 http://security.ubuntu.com precise-security Release [49.6 kB]
+Hit http://ppa.launchpad.net precise Release.gpg
+Get:8 http://security.ubuntu.com precise-security/main Sources [90.5 kB]
+Hit http://ppa.launchpad.net precise Release
+Get:9 http://us-west-1.ec2.archive.ubuntu.com precise/main TranslationIndex [3,706 B]
+Get:10 http://us-west-1.ec2.archive.ubuntu.com precise/universe TranslationIndex [2,922 B]
+Get:11 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main Sources [421 kB]
+Ign https://github.com precise Release.gpg
+Hit http://ppa.launchpad.net precise/main Sources
+Get:12 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe Sources [97.8 kB]
+Get:13 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main amd64 Packages [696 kB]
+Get:14 http://security.ubuntu.com precise-security/universe Sources [28.4 kB]
+Hit http://ppa.launchpad.net precise/main amd64 Packages
+Get:15 http://security.ubuntu.com precise-security/main amd64 Packages [326 kB]
+Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe amd64 Packages
+Get:16 http://us-west-1.ec2.archive.ubuntu.com precise-updates/main i386 Packages [716 kB]
+Get:17 http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe i386 Packages [223 kB]
+Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/main TranslationIndex
+Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe TranslationIndex
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/main Translation-en
+Hit http://ppa.launchpad.net precise/main i386 Packages
+Hit http://us-west-1.ec2.archive.ubuntu.com precise/universe Translation-en
+Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/main Translation-en
+Hit http://us-west-1.ec2.archive.ubuntu.com precise-updates/universe Translation-en
+Ign http://ppa.launchpad.net precise/main TranslationIndex
+Ign https://github.com precise Release
+Get:18 http://security.ubuntu.com precise-security/universe amd64 Packages [83.1 kB]
+Get:19 http://security.ubuntu.com precise-security/main i386 Packages [345 kB]
+Get:20 http://security.ubuntu.com precise-security/universe i386 Packages [86.7 kB]
+Hit http://security.ubuntu.com precise-security/main TranslationIndex
+Hit http://security.ubuntu.com precise-security/universe TranslationIndex
+Hit http://security.ubuntu.com precise-security/main Translation-en
+Hit http://security.ubuntu.com precise-security/universe Translation-en
+Ign http://ppa.launchpad.net precise/main Translation-en_US
+Ign http://ppa.launchpad.net precise/main Translation-en
+Ign https://github.com precise/main TranslationIndex
+Err https://github.com precise/main Sources
+  The requested URL returned error: 406
+Err https://github.com precise/main amd64 Packages
+  The requested URL returned error: 406
+Err https://github.com precise/main i386 Packages
+  The requested URL returned error: 406
+Ign https://github.com precise/main Translation-en_US
+Ign https://github.com precise/main Translation-en
+Fetched 9,288 kB in 15s (599 kB/s)
+W: Failed to fetch https://github.com/puppetlabs/jruby-parser.git/dists/precise/main/source/Sources  The requested URL returned error: 406
+
+Wdone updating
+install salt minion
+Reading package lists...: Failed to fetch https://github.com/puppetlabs/jruby-parser.git/dists/precise/main/binary-amd64/Packages  The requested URL returned error: 406
+
+W: Failed to fetch https://github.com/puppetlabs/jruby-parser.git/dists/precise/main/binary-i386/Packages  The requested URL returned error: 406
+
+E: Some index files failed to download. They have been ignored, or old ones used instead.
+
+Building dependency tree...
+Reading state information...
+salt-minion is already the newest version.
+0 upgraded, 0 newly installed, 0 to remove and 106 not upgraded.
+done salt minion
