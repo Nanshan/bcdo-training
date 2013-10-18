@@ -1,12 +1,11 @@
-Notes for aws ec2 :
+create an instance:
 
-1) when run ec2 command lines: do not forget the region
+ec2-run-instances ami-7a30073f --region us-west-1 --key my_new_key -g bootcamp 
 
-copy file to ec2 instances:
+create a volumn:
 
+ec2-create-volume  --size 20 --availability-zone us-west-1a
 
-common ec2 command lines:
+attach a volum:
 
-
-run remotely:
-
+ec2-attach-volume vol-4fcb7a1b -i i-6c821c36 --device /dev/sda1
