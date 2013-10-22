@@ -1,4 +1,0 @@
-devops:
-  group:
-   -present
-     
