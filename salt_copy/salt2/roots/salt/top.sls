@@ -1,5 +1,0 @@
-base:
-  '*':
-    - motd
-    - sshconfig
-    - ami
