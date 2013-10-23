@@ -1,12 +1,12 @@
 #!/usr/bin/python
 import sys
 import argparse
-import libcloudinit
+from libcloudinit import ec2conn
 
 class ec2run(object):
-    def __inti__(self):
-        pass 
-      
+    def __init__(self):
+        self.ec2=ec2conn('us-west-1') 
+
     def parse_args(self, args):
         parser = argparse.ArgumentParser()
         parser.add_argument("-r", "--region", help="ec2 region")
@@ -22,6 +22,7 @@ class ec2run(object):
         parser.add_argument("--role", help="roles defined in")
         parser.add_argument("-s", "--stack", help="")
         parser.add_argument("-b", "--branch", help="git branch")
+        parser.add_argument("--name", help="node name")
         self.args=parser.parse_args(args)
         return self.args
 
@@ -35,27 +36,32 @@ class ec2run(object):
 
     def validate_image(self, ami):
         try:
-           image=conn.list_images(ex_image_ids=[ ami ])[0]
-           print image
+           self._image = self.ec2.conn.list_images(ex_image_ids=[ ami ])[0]
+ #          print image
 	   return 1
         except:
 	   return 0
     
+
     def create_ec2_instance(self, args):
-        libobj = libcloudinit('us-west-1')
         arg_list=vars(self.args)
-  	kwargs = { 'image': args.ami,
+
+  	kwargs = { 'name': args.name,
+                   'image': self._image,
              	   'size': args.instance_type,
-                   'region': libobj.region,
-                   'group': args.group,
+#                   'location': args.availability_zone,
+                   'ex_keyname': args.key,
+                   'ex_securitygroup': args.group,
+#                  'ex_maxcount': args.instance_count,
+         
 		 }
-        return conn.create_node(kwargs)
+        return  self.ec2.conn.create_node(**kwargs)
 
 def main():
-  ec2obj = ec2run()
+  ec2obj=ec2run()
   args=ec2obj.parse_args(sys.argv[1:])
-  ec2obj.print_args(args)
-  ec2obj.create_ec2_instance(args)
+  print ec2obj.validate_image('ami-bce0d7f9')
+  print  ec2obj.create_ec2_instance(args)
 
 if __name__ == '__main__':
     main()

@@ -9,7 +9,6 @@ class ec2conn(object):
 
     def __init__(self, region):
         self.region= region
-     
     	self._ec2_map = { 'us-east-1': Provider.EC2_US_EAST,
               	          'us-west-1': Provider.EC2_US_WEST }
 
