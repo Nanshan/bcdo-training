@@ -37,18 +37,25 @@ class ec2run(object):
     def validate_image(self, ami):
         try:
            self._image = self.ec2.conn.list_images(ex_image_ids=[ ami ])[0]
- #          print image
+           print self._image
 	   return 1
         except:
 	   return 0
-    
 
+    def validate_size(self, size):
+        try: 
+           self._size= self.ec2.conn.list_sizes()[0]    
+           print self._size
+           return  1
+        except:
+           return 0
+          
     def create_ec2_instance(self, args):
         arg_list=vars(self.args)
 
   	kwargs = { 'name': args.name,
                    'image': self._image,
-             	   'size': args.instance_type,
+             	   'size': self._size,
 #                   'location': args.availability_zone,
                    'ex_keyname': args.key,
                    'ex_securitygroup': args.group,
@@ -61,6 +68,7 @@ def main():
   ec2obj=ec2run()
   args=ec2obj.parse_args(sys.argv[1:])
   print ec2obj.validate_image('ami-bce0d7f9')
+  print ec2obj.validate_size('t1.micro')
   print  ec2obj.create_ec2_instance(args)
 
 if __name__ == '__main__':
