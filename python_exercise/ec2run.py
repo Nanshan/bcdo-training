@@ -8,7 +8,7 @@ class ec2run(object):
         self.ec2=ec2conn('us-west-1') 
 
     def parse_args(self, args):
-        parser = argparse.ArgumentParser()
+        #parser = argparse.ArgumentParser()
         parser.add_argument("-r", "--region", help="ec2 region")
         parser.add_argument("-z", "--availability_zone", help="ec2 availability zone")
         parser.add_argument("-a", "--ami", help="AMI name")
@@ -19,7 +19,7 @@ class ec2run(object):
         parser.add_argument("-n", "--instance-count", help="Maximum instances to launch", default=1)
         parser.add_argument("-v", "--verbose", help="Verbose Output", action="store_true", default="False")
         parser.add_argument("-t", "--instance_type", help="Ec2 Instance Type", default="t1.micro")
-        parser.add_argument("--role", help="roles defined in")
+        parser.add_argument('-r', "--role", help="roles defined in")
         parser.add_argument("-s", "--stack", help="")
         parser.add_argument("-b", "--branch", help="git branch")
         parser.add_argument("--name", help="node name")
