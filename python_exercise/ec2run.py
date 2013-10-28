@@ -2,14 +2,14 @@
 import sys
 import argparse
 from libcloudinit import ec2conn
-
+import os
 class ec2run(object):
     def __init__(self):
         self.ec2=ec2conn('us-west-1') 
 
     def parse_args(self, args):
-        #parser = argparse.ArgumentParser()
-        parser.add_argument("-r", "--region", help="ec2 region")
+        parser = argparse.ArgumentParser()
+       # parser.add_argument("-r", "--region", help="ec2 region")
         parser.add_argument("-z", "--availability_zone", help="ec2 availability zone")
         parser.add_argument("-a", "--ami", help="AMI name")
         parser.add_argument("-d", "--user-data", help="User data string")
@@ -51,7 +51,8 @@ class ec2run(object):
            return 0
           
     def create_ec2_instance(self, args):
-        arg_list=vars(self.args)
+
+#        arg_list=vars(self.args)
 
   	kwargs = { 'name': args.name,
                    'image': self._image,
@@ -63,13 +64,24 @@ class ec2run(object):
          
 		 }
         return  self.ec2.conn.create_node(**kwargs)
+ 
+    def create_grains(self, filename, mode, args):
+       # arg_list=vars(self.args)
+        str="roles: %s" % args.role
+        if os.path.exists("filename"):
+            f= file(filename, mode)
+        else:
+            f= file(filename, mode)
+            f.write(str)
 
+    
 def main():
-  ec2obj=ec2run()
-  args=ec2obj.parse_args(sys.argv[1:])
-  print ec2obj.validate_image('ami-bce0d7f9')
-  print ec2obj.validate_size('t1.micro')
-  print  ec2obj.create_ec2_instance(args)
+   ec2obj=ec2run()
+   args=ec2obj.parse_args(sys.argv[1:])
+   ec2obj.create_grains("/etc/salt/grains", "w+", args)
+   print ec2obj.validate_image('ami-bce0d7f9')
+   print ec2obj.validate_size('t1.micro')
+   print  ec2obj.create_ec2_instance(args)
 
 if __name__ == '__main__':
     main()
