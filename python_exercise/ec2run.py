@@ -2,6 +2,7 @@
 import sys
 import argparse
 from libcloudinit import ec2conn
+import os
 
 
 class ec2run(object):
@@ -13,6 +14,9 @@ class ec2run(object):
         parser.add_argument("-r", "--region", help="ec2 region")
         parser.add_argument("-z", "--availability_zone", 
 			    help="ec2 availability zone")
+        parser = argparse.ArgumentParser()
+       # parser.add_argument("-r", "--region", help="ec2 region")
+        parser.add_argument("-z", "--availability_zone", help="ec2 availability zone")
         parser.add_argument("-a", "--ami", help="AMI name")
         parser.add_argument("-d", "--user-data", help="User data string")
         parser.add_argument("-f", "--user_data_file",
@@ -57,6 +61,7 @@ class ec2run(object):
             return 0
 
     def create_ec2_instance(self, args):
+<<<<<<< HEAD
         arg_list = vars(self.args)
   	kwargs = {'name': args.name,
                   'image': self._image,
@@ -65,13 +70,47 @@ class ec2run(object):
                   'ex_securitygroup': args.group}
         return self.ec2.conn.create_node(**kwargs)
 
+=======
 
+#        arg_list=vars(self.args)
+
+  	kwargs = { 'name': args.name,
+                   'image': self._image,
+             	   'size': self._size,
+#                   'location': args.availability_zone,
+                   'ex_keyname': args.key,
+                   'ex_securitygroup': args.group,
+#                  'ex_maxcount': args.instance_count,
+         
+		 }
+        return  self.ec2.conn.create_node(**kwargs)
+ 
+    def create_grains(self, filename, mode, args):
+       # arg_list=vars(self.args)
+        str="roles: %s" % args.role
+        if os.path.exists("filename"):
+            f= file(filename, mode)
+        else:
+            f= file(filename, mode)
+            f.write(str)
+>>>>>>> 4a870c05f850d6a42c098208df4e7d5dc52154b7
+
+    
 def main():
+<<<<<<< HEAD
     ec2obj = ec2run()
     args = ec2obj.parse_args(sys.argv[1:])
     print ec2obj.validate_image('ami-bce0d7f9')
     print ec2obj.validate_size('t1.micro')
     print ec2obj.create_ec2_instance(args)
+=======
+   ec2obj=ec2run()
+   args=ec2obj.parse_args(sys.argv[1:])
+   ec2obj.create_grains("/etc/salt/grains", "w+", args)
+   print ec2obj.validate_image('ami-bce0d7f9')
+   print ec2obj.validate_size('t1.micro')
+   print  ec2obj.create_ec2_instance(args)
+>>>>>>> 4a870c05f850d6a42c098208df4e7d5dc52154b7
 
 if __name__ == '__main__':
     main()
