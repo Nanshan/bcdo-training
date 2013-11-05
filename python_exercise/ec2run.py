@@ -11,11 +11,10 @@ class ec2run(object):
         self.ec2 = ec2conn('us-west-1')
 
     def parse_args(self, args):
-        parser.add_argument("-r", "--region", help="ec2 region")
+        #parser.add_argument("-r", "--region", help="ec2 region")
         parser.add_argument("-z", "--availability_zone",
                             help="ec2 availability zone")
         parser = argparse.ArgumentParser()
-       # parser.add_argument("-r", "--region", help="ec2 region")
         parser.add_argument("-z", "--availability_zone",
                             help="ec2 availability zone")
         parser.add_argument("-a", "--ami", help="AMI name")
@@ -63,20 +62,16 @@ class ec2run(object):
 
     def create_ec2_instance(self, args):
         arg_list = vars(self.args)
+        sd = SSHKeyDeployment(open(os.path.expanduser("~/.ssh/id_rsa.pub")).read())
+        script = ScriptDeployment("echo roles: args.role  >> /etc/salt/grains")
+        msd = MultiStepDeployment([sd, script])
         kwargs = {'name': args.name,
                   'image': self._image,
                   'size': self._size,
                   'ex_keyname': args.key,
-                  'ex_securitygroup': args.group, }
-        return self.ec2.conn.create_node(**kwargs)
-
-    def create_grains(self, filename, mode, args):
-        str = "roles: %s" % args.role
-        if os.path.exists("filename"):
-            f = file(filename, mode)
-        else:
-            f = file(filename, mode)
-            f.write(str)
+                  'ex_securitygroup': args.group,
+                  'deploy': msd, }
+        return self.ec2.conn.deploy_node(**kwargs)
 
 
 def main():
