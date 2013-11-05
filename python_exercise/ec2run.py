@@ -1,4 +1,7 @@
 #!/usr/bin/python
+from libcloud.compute.deployment import MultiStepDeployment
+from libcloud.compute.deployment import  ScriptDeployment, SSHKeyDeployment
+import os
 import sys
 import argparse
 from libcloudinit import ec2conn
@@ -12,8 +15,6 @@ class ec2run(object):
 
     def parse_args(self, args):
         #parser.add_argument("-r", "--region", help="ec2 region")
-        parser.add_argument("-z", "--availability_zone",
-                            help="ec2 availability zone")
         parser = argparse.ArgumentParser()
         parser.add_argument("-z", "--availability_zone",
                             help="ec2 availability zone")
